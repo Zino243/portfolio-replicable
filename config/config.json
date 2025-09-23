@@ -1,0 +1,70 @@
+{
+  "titulo": "Aitor Sanchez",
+  "perfil": "perfil ejemplo",
+  "sobre_mi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "colores": {
+    "fondo": "#F2F1F0",
+    "primario": "#F0C490",
+    "texto": "#0B0B0D",
+    "secundario": "#0182DA"
+  },
+  "tecnologias": [
+    "image_tecnologia.svg"
+  ],
+  "proyectos": [
+    {
+      "id": "proyecto1",
+      "titulo": "Proyecto 1",
+      "mini_imagen": "mini_image_proyecto1.jpg",
+      "hover_text": "Ver más",
+      "texto1": "Descripción del proyecto 1",
+      "texto2": "Tecnologías usadas: HTML, CSS, JavaScript",
+      "imagen1": "image_proyecto1.svg",
+      "imagen2": "image_tecnologia.svg",
+      "imagen3": "image_tecnologia.svg",
+      "publicado": true
+    },
+    {
+      "id": "proyecto2",
+      "titulo": "Proyecto 2",
+      "mini_imagen": "mini_image_proyecto2.jpg",
+      "hover_text": "Ver más",
+      "texto1": "Descripción del proyecto 2",
+      "texto2": "Tecnologías usadas: React, Node.js",
+      "imagen1": "image_proyecto2.svg",
+      "imagen2": "image_tecnologia.svg",
+      "imagen3": "image_tecnologia.svg",
+      "publicado": false
+    },
+    {
+      "id": "proyecto3",
+      "titulo": "Proyecto 3",
+      "mini_imagen": "mini_image_proyecto3.jpg",
+      "hover_text": "Ver más",
+      "texto1": "Descripción del proyecto 3",
+      "texto2": "Tecnologías usadas: Python, Django",
+      "imagen1": "image_proyecto3.svg",
+      "imagen2": "image_tecnologia.svg",
+      "imagen3": "image_tecnologia.svg",
+      "publicado": true
+    }
+  ],
+  "galeria": [
+    {
+      "src": "image_galeria1.jpg",
+      "publicado": true
+    },
+    {
+      "src": "image_galeria2.jpg",
+      "publicado": false
+    },
+    {
+      "src": "image_galeria3.jpg",
+      "publicado": true
+    }
+  ],
+  "contacto": {
+    "telefono": "+123456789",
+    "email": "correo@ejemplo.com"
+  }
+} 
