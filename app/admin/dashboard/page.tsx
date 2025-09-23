@@ -4,7 +4,7 @@ import { useState } from "react";
 import Gallery from "@/app/components/gallery";
 import Projects from "@/app/components/projects";
 import Home from "@/app/components/home";
-import "../../globals.css"
+import { Colors } from "@/app/components/colors-config"
 
 export default function HomePage() {
   const [active, setActive] = useState("home");
@@ -22,10 +22,9 @@ export default function HomePage() {
     }
   };
 
-  const primario = "#F0C490"
   return (
     <>
-      <div style={{ backgroundColor: primario }} className="flex flex-row bg-green-400 h-screen">
+      <div style={{ backgroundColor: Colors.primario }} className="flex flex-row bg-green-400 h-screen">
       {/* Sidebar */}
       <div className="flex flex-col w-48 border-r border-gray-300 p-2">
         <button 
