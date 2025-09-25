@@ -1,16 +1,11 @@
 {
-  "titulo": "Aitor Sanchez",
-  "perfil": "perfil ejemplo",
-  "sobre_mi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "colores": {
+    "blanco": "#fafafa",
     "fondo": "#F2F1F0",
     "primario": "#F0C490",
     "texto": "#0B0B0D",
     "secundario": "#0182DA"
   },
-  "tecnologias": [
-    "image_tecnologia.svg"
-  ],
   "proyectos": [
     {
       "id": "proyecto1",

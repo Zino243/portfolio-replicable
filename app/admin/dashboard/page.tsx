@@ -24,34 +24,55 @@ export default function HomePage() {
 
   return (
     <>
-      <div style={{ backgroundColor: Colors.primario }} className="flex flex-row bg-green-400 h-screen">
+    <div
+      style={{ backgroundColor: Colors.fondo }}
+      className="flex h-screen"
+    >
       {/* Sidebar */}
-      <div className="flex flex-col w-48 border-r border-gray-300 p-2">
-        <button 
-          onClick={() => setActive("home")} 
-          className="p-2 text-left m-1.5 hover:bg-green-700 rounded"
-        >
-          Home
-        </button>
-        <button 
-          onClick={() => setActive("gallery")} 
-          className="p-2 text-left hover:bg-red-600 rounded"
-        >
-          Gallery
-        </button>
-        <button 
-          onClick={() => setActive("projects")} 
-          className="p-2 text-left hover:bg-red-600 rounded"
-        >
-          Projects
-        </button>
-      </div>
+      <aside className="flex flex-col w-56 bg-gray-800 text-white shadow-lg">
+        <h2 className="text-xl font-bold px-4 py-6 border-b border-gray-700">
+          Mi Portfolio
+        </h2>
+        <nav className="flex-1 px-2 py-4 space-y-2">
+          <button
+            onClick={() => setActive("home")}
+            className={`w-full text-left px-3 py-2 rounded-md transition ${
+              active === "home"
+                ? "bg-green-600 font-semibold"
+                : "hover:bg-green-700"
+            }`}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => setActive("gallery")}
+            className={`w-full text-left px-3 py-2 rounded-md transition ${
+              active === "gallery"
+                ? "bg-green-600 font-semibold"
+                : "hover:bg-green-700"
+            }`}
+          >
+            Gallery
+          </button>
+          <button
+            onClick={() => setActive("projects")}
+            className={`w-full text-left px-3 py-2 rounded-md transition ${
+              active === "projects"
+                ? "bg-green-600 font-semibold"
+                : "hover:bg-green-700"
+            }`}
+          >
+            Projects
+          </button>
+        </nav>
+      </aside>
 
       {/* Content */}
-      <div className="flex-1 p-4">
+      <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
         {renderContent()}
-      </div>
+      </main>
     </div>
-    </>
+  </>
+
   );
 }       
