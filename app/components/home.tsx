@@ -6,6 +6,8 @@ import { useState } from "react"
 import { Colors } from "@/app/components/colors-config"
 import ChargeTechnologies from "@/app/components/chargeTecnologies"
 import config from "@/config/personales.json"
+import ModalTechnologies from "@/app/components/modalCreateTechnologies"
+
 
 export default function Home() {
 
@@ -22,7 +24,7 @@ export default function Home() {
     const [email, setEmail] = useState(config.email)
     const [tecnologias, setTecnologias] = useState<Tecnologia[]>(ChargeTechnologies())
     const [imagenPerfil, setImagenPerfil] = useState<string | StaticImageData>(config.imagen || placeholderImagen.src)
-
+    const [creadorTecnologiasAbierto, setCreadorTecnologiasAbierto] = useState(false)
 
 
     async function saveData() {
@@ -144,9 +146,15 @@ export default function Home() {
             <button
             style={{ color: Colors.base }}
             className="w-full h-10 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg shadow-sm transition"
+            onClick={() => setCreadorTecnologiasAbierto(true)}
             >
             Añadir
             </button>
+        {/* el modal para crear tecnologias aprendidas */}
+
+        <ModalTechnologies isOpen={creadorTecnologiasAbierto} onClose={() => setCreadorTecnologiasAbierto(false)}>
+            <h1> its just work </h1>
+        </ModalTechnologies>
 
             <ul className="space-y-3">
             {tecnologias.map((tecnologia) => (
