@@ -1,12 +1,12 @@
 import Image, { StaticImageData } from "next/image"
 import placeholderImagen from "@/public/placeholder.png"
-import openEye from "@/public/open-eye.png"
 import pencilEdit from "@/public/pencil.svg"
 import { useState } from "react"
 import { Colors } from "@/app/components/colors-config"
 import ChargeTechnologies from "@/app/components/chargeTecnologies"
 import config from "@/config/personales.json"
 import ModalTechnologies from "@/app/components/modalCreateTechnologies"
+import TecnologiaItem from "./TecnologiaItem"
 
 
 export default function Home() {
@@ -26,6 +26,9 @@ export default function Home() {
     const [imagenPerfil, setImagenPerfil] = useState<string | StaticImageData>(config.imagen || placeholderImagen.src)
     const [creadorTecnologiasAbierto, setCreadorTecnologiasAbierto] = useState(false)
 
+    // useStates para el modal
+    const [nombreTecnologia, setNombreTecnologia] = useState("")
+    const [imagenTecnologia, setImagenTecnologia] = useState<string | StaticImageData>(placeholderImagen.src)
 
     async function saveData() {
         try {
@@ -52,6 +55,27 @@ export default function Home() {
         }
     }
 
+    async function guardarTecnologia() {
+        try {
+            const formData = new FormData()
+            formData.append("nombre", nombreTecnologia)
+            
+            const imgFile = (document.querySelector<HTMLInputElement>("#imagenTecnologia")?.files?.[0])
+            if (imgFile) formData.append("imagen", imgFile)
+                
+            const res = await fetch("/api/guardarTecnologias", {
+                method: "POST",
+                body: formData,
+            })
+
+            const data = await res.json()
+            alert(data.message)
+        } catch (error) {
+            console.error("Error guardando las tecnologias:", error)
+            alert("Error al guardar las tecnologias")
+        }
+        
+    }
     return (
 
         <div className="max-w-3xl mx-auto p-6 space-y-8">
@@ -136,7 +160,8 @@ export default function Home() {
         </div>
 
         {/* Imagen ejemplo */}
-        <div className="bg-amber-200 h-48 rounded-xl flex items-center justify-center shadow-inner">
+        <div style={{ backgroundColor: Colors.primario }}
+        className="h-48 rounded-xl flex items-center justify-center shadow-inner">
             <span className="text-gray-600">Aquí va la imagen de pruebas</span>
         </div>
 
@@ -153,38 +178,60 @@ export default function Home() {
         {/* el modal para crear tecnologias aprendidas */}
 
         <ModalTechnologies isOpen={creadorTecnologiasAbierto} onClose={() => setCreadorTecnologiasAbierto(false)}>
-            <h1> its just work </h1>
+            <div className="flex flex-col w-full justify-center items-center">
+                <div className="relative w-24 h-24 group">
+                {/* Imagen principal */}
+                <Image
+                    src={imagenTecnologia}
+                    alt="imagen"
+                    fill
+                    className="w-full h-full rounded-full object-cover"
+                />
+
+                {/* Icono de editar */}
+                <div className="absolute bottom-8 right-8 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                    <label className="w-full h-full cursor-pointer">
+                        {/* Icono de lápiz */}
+                        <Image src={pencilEdit} alt="Editar" className="w-full h-full" />
+                        
+                        {/* Input file oculto pero funcional */}
+                        <input
+                        type="file"
+                        id="imagenTecnologia"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                            // Aquí guardas el archivo en tu useState
+                                setImagenTecnologia(URL.createObjectURL(file))
+                            }
+                        }}
+                        />
+                    </label>
+                    </div>
+                </div>
+                <input type="text"
+                placeholder="nombre de la tecnologia"
+                onChange={(e) => setNombreTecnologia(e.target.value)}
+                className="w-full mt-8 mb-4 shadow-md pl-4 py-2 bg-[#fafafa] rounded-lg"
+                />
+                <button
+                onClick={() => {
+                    setCreadorTecnologiasAbierto(false)
+                    guardarTecnologia()
+                }}
+                className="py-2 bg-green-500 text-white w-full rounded-lg">Guardar</button>
+            </div>
         </ModalTechnologies>
 
-            <ul className="space-y-3">
-            {tecnologias.map((tecnologia) => (
-                <li
-                key={tecnologia.id}
-                className="flex items-center justify-between bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition"
-                >
-                {/* Imagen + texto */}
-                <div className="flex items-center gap-3">
-                    <Image
-                    src={placeholderImagen}
-                    alt="imagen"
-                    className="h-12 w-12 rounded-full border border-gray-200"
-                    />
-                    <span className="font-medium">{tecnologia.texto}</span>
-                </div>
+        {/* lista de tecnologias */}
 
-                {/* Botones */}
-                <div className="flex items-center gap-2">
-                    <button className="text-sm px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
-                    Eliminar
-                    </button>
-                    <button className="text-sm px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-1 transition">
-                    <Image src={openEye} alt="imagen" className="h-5 w-5" />
-                    Visible
-                    </button>
-                </div>
-                </li>
+        <ul className="space-y-3">
+            {tecnologias.map((tec) => (
+                <TecnologiaItem key={tec.id} tecnologia={tec} />
             ))}
-            </ul>
+        </ul>
         </div>
 
         </div>

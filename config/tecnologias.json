@@ -1,16 +1,10 @@
 {
-    "tecnologias": [
+  "tecnologias": [
     {
-      "id" : 1,
-      "imagen" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommunity.softr.io%2Ft%2Frequest-for-adding-placeholder-image-functionality-in-list-views%2F4013&psig=AOvVaw0TzetCOP1ATXCdkhlkpKh6&ust=1758821280795000&source=images&opi=89978449",
-      "texto" : "prueba",
-      "visible" : true
-    },
-    {
-      "id" : 2,
-      "imagen" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommunity.softr.io%2Ft%2Frequest-for-adding-placeholder-image-functionality-in-list-views%2F4013&psig=AOvVaw0TzetCOP1ATXCdkhlkpKh6&ust=1758821280795000&source=images&opi=89978449",
-      "texto" : "prueba2",
-      "visible" : true
+      "id": 1,
+      "imagen": "/uploads/pexels-prolificpeople-33711180.jpg",
+      "texto": "qwe",
+      "visible": true
     }
-    ]
+  ]
 }

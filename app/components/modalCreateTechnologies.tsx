@@ -10,8 +10,8 @@ export default function ModalTechnologies({ isOpen, onClose, children }: ModalPr
   if (!isOpen) return null; // No renderiza si está cerrado
 
   return (
-    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-96 relative">
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-xs flex items-center justify-center z-50">
+      <div className="bg-gray-200 rounded-lg p-6 w-96 relative">
         <button
           className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
           onClick={onClose}
