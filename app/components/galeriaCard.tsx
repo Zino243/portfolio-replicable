@@ -12,13 +12,35 @@ export default function GaleriaCard({
   title,
   project,
   date,
-  isPublic,
+  visible,
 }: ImageType) {
-  const actuallyDate = new Date();
-  const category = "en casa";
 
-  const data = title + " \n" + project + " \n" + date;
-  const [state, setState] = useState(true);
+    const data = title + " \n" + project + " \n" + date;
+    const [state, setState] = useState(visible);
+
+  async function changeVisibility() {
+    
+    try {
+      const response = await fetch("/api/cambiarVisible", {
+        method: "PUT",
+        body: JSON.stringify(
+          { "id": id,
+            "changes": { "visible": !state},
+            "src": "config/galeria.json"
+          }
+        ),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al cambiar visibilidad");
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
     return (
         <>
@@ -50,7 +72,10 @@ export default function GaleriaCard({
 
         <div className="flex items-center space-x-3">
           <button
-            onClick={() => setState(!state)}
+            onClick={() => {
+              changeVisibility()
+              setState(!state)
+            }}
             className={`transition text-white rounded-full px-3 py-1 h-9 text-sm 
               ${state 
                 ? "bg-green-500 hover:bg-green-600" 

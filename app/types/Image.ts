@@ -4,5 +4,5 @@ export type Image = {
     title: string;
     project: string;
     date: string;
-    isPublic: boolean;
+    visible: boolean;
   };

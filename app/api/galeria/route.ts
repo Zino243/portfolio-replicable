@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
-import { Image } from "@/app/types/Image";
 
 export async function GET() {
   try {

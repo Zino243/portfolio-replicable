@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Colors } from "@/app/components/colors-config"
 import ChargeTechnologies from "@/app/components/chargeTecnologies"
 import config from "@/config/personales.json"
-import ModalTechnologies from "@/app/components/modalCreateTechnologies"
+import ModalTechnologies from "@/app/components/modalCreate"
 import TecnologiaItem from "./TecnologiaItem"
 
 
