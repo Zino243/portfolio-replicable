@@ -1,7 +1,26 @@
+"use client"
 
+import { useEffect, useState } from "react";
 import GaleriaCard from "./galeriaCard"
+import { Image } from "@/app/types/Image";
 
 export default function Gallery() {
+  const [images, setImages] = useState<Image[]>([]);
+
+  useEffect(() => {
+    async function fetchGalleryImages() {
+      try {
+        const response = await fetch("/api/galeria");
+        const data = await response.json();
+        setImages(data); // guardamos las imágenes en el estado
+      } catch (error) {
+        console.error("Error al cargar la galería:", error);
+      }
+    }
+    fetchGalleryImages();
+  }, []);
+  console.log(images);
+  
   return (
     <>
       <h1 className="text-4xl font-bold">Galleria</h1>
@@ -27,7 +46,9 @@ export default function Gallery() {
       </div>
       {/* aqui va la galeria */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-        <GaleriaCard/>
+        {images.map((image) => (
+          <GaleriaCard key={image.id} {...image} />
+        ))}
       </div>
     </>
   )

@@ -44,20 +44,6 @@
       "publicado": true
     }
   ],
-  "galeria": [
-    {
-      "src": "image_galeria1.jpg",
-      "publicado": true
-    },
-    {
-      "src": "image_galeria2.jpg",
-      "publicado": false
-    },
-    {
-      "src": "image_galeria3.jpg",
-      "publicado": true
-    }
-  ],
   "contacto": {
     "telefono": "+123456789",
     "email": "correo@ejemplo.com"

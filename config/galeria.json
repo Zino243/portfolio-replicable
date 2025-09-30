@@ -1,0 +1,28 @@
+{
+    "galeria": [
+    {
+        "id": 1,
+        "src": "/gallery/image_galeria1.png",
+        "title": "Imagen de la Galería 1",
+        "project": "Proyecto 1",
+        "isPublic": true,
+        "date": "2024-01-15"
+        },
+    {
+        "id": 2,
+        "src": "/gallery/image_galeria1.png",
+        "title": "Imagen de la Galería 2",
+        "project": "Proyecto 2",
+        "isPublic": false,
+        "date": "2024-01-16"
+    },
+    {
+        "id": 3,
+        "src": "/gallery/image_galeria1.png",
+        "title": "Imagen de la Galería 3",
+        "project": "Proyecto 3",
+        "isPublic": true,
+        "date": "2024-01-17"
+    }   
+    ]
+}

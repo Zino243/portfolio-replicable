@@ -4,20 +4,31 @@ import editImage from "@/public/pencil.svg"
 import papeleraSVG from "@/public/papelera.svg"
 import infoSVG from "@/public/info.svg"
 import { useState } from "react"
+import { Image as ImageType } from "@/app/types/Image"
 
-export default function GaleriaCard() {
+export default function GaleriaCard({
+  id,
+  src,
+  title,
+  project,
+  date,
+  isPublic,
+}: ImageType) {
   const actuallyDate = new Date();
   const category = "en casa";
 
-  const data = actuallyDate.toString() + " \n" + category;
+  const data = title + " \n" + project + " \n" + date;
   const [state, setState] = useState(true);
 
     return (
         <>
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <Image
-            src={placeholder}
+            src={src || placeholder}
             alt="Imagen de ejemplo"
+            height={192}
+            width={320}
+            quality={100}
             className="w-full h-48 object-cover"
           />
           <div className="p-4 flex items-center justify-between">

@@ -8,7 +8,8 @@ import { Colors } from "@/app/components/colors-config"
 
 export default function HomePage() {
   const [active, setActive] = useState("home");
-
+  const [visible, setVisible] = useState(true);
+  
   const renderContent = () => {
     switch (active) {
       case "home":
@@ -29,12 +30,14 @@ export default function HomePage() {
       className="flex h-screen"
     >
       {/* Sidebar */}
-      <aside className="flex flex-col w-56 bg-gray-800 text-white shadow-lg">
-        <h2 className="text-xl font-bold px-4 py-6 border-b border-gray-700">
-          Mi Portfolio
-        </h2>
-        <nav className="flex-1 px-2 py-4 space-y-2">
-          <button
+      {
+        visible && (<aside className="flex flex-col w-56 bg-gray-800 text-white shadow-lg">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+            <h2 className="text-xl font-bold">Mi Portfolio</h2>
+            <button onClick={() => setVisible(false)}>Close</button>
+          </div>
+          <nav className="flex-1 px-2 py-4 space-y-2">
+            <button
             onClick={() => setActive("home")}
             className={`w-full text-left px-3 py-2 rounded-md transition ${
               active === "home"
@@ -65,8 +68,7 @@ export default function HomePage() {
             Projects
           </button>
         </nav>
-      </aside>
-
+      </aside>)}
       {/* Content */}
       <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
         {renderContent()}

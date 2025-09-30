@@ -5,6 +5,12 @@
       "imagen": "/uploads/pexels-prolificpeople-33711180.jpg",
       "texto": "qwe",
       "visible": true
+    },
+    {
+      "id": 2,
+      "imagen": "/uploads/image.png",
+      "texto": "dos",
+      "visible": true
     }
   ]
 }
